@@ -3,7 +3,7 @@
     <nav-header></nav-header>
     <nav-bar></nav-bar>
     <my-scroller class="list-content">
-      <router-view></router-view>
+      <router-view :style="'background:#fff;'"></router-view>
     </my-scroller>
   </div>
 </template>

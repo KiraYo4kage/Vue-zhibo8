@@ -13,6 +13,7 @@ export default {
 <style>
 ::-webkit-scrollbar{
   width: 5px;
+  background-color: #fff;
 }
 ::-webkit-scrollbar-thumb{
   background-color: #bbb;
