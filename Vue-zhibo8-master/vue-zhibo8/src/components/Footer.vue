@@ -1,7 +1,7 @@
 <template>
   <div class="footer flex">
     <div class="nav flex-1" v-for="module in footer" @click="jump(module.path)">
-      <template v-if="config.pathRoot + module.path === $route.path">
+      <template v-if="$route.path.indexOf(config.pathRoot + module.path) > -1">
         <img :src="config.imgRoot+module.img.off"/>
         <span class="active">{{module.name}}</span>
       </template>

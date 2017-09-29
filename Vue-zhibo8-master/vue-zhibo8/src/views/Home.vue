@@ -1,10 +1,22 @@
 <template>
   <div class="home flex">
     <nav-header></nav-header>
-    <nav-bar></nav-bar>
-    <my-scroller class="list-content">
-      <router-view :style="'background:#fff;'"></router-view>
-    </my-scroller>
+    <nav-bar :translate="translate" :autoSwipe="autoSwipe"></nav-bar>
+    <swiper :option="option" :dragToTranslate="dragToTranslate" :dragToChangeNav="dragToChangeNav" ref="swiper">
+      <template v-for="item in header.navBar">
+
+        <template v-if="!item.scroller">
+          <my-scroller class="list-content">
+            <router-view :style="'background:#fff;'" :name="item.path"></router-view>
+          </my-scroller>
+        </template>
+
+        <template v-else>
+          <router-view :style="'background:#fff;'"></router-view>
+        </template>
+
+      </template>
+    </swiper>
   </div>
 </template>
 
@@ -13,49 +25,73 @@ import router from 'vue-router'
 import { mapGetters, mapActions } from 'vuex'
 import NavHeader from '@/components/Header'
 import NavBar from '@/components/NavBar'
+import Swiper from '@/components/Swiper'
 import MyScroller from '@/components/MyScroller'
 
 
 export default {
   name: 'home',
-  components: { NavHeader, NavBar, MyScroller },
+  components: { NavHeader, NavBar, MyScroller, Swiper },
+  data() {
+    return {
+      option: {
+        pages: 6,
+        default: 3,
+        offsetLeft: 0
+      },
+      translate: 0
+    }
+  },
   computed: {
     ...mapGetters(['header']),
     top() {
       return 50 + (this.header.navBar.length ? 30 : 0);
     }
   },
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  },
   mounted(){
     this.header.navBar = [{
       name: '论坛',
-      path: '/home/bbs',
+      path: 'bbs',
       selected: false
     },{
       name: '新闻',
-      path: '/home/news',
+      path: 'news',
       selected: false
     },{
       name: '关注',
-      path: '/home/follow',
+      path: 'follow',
       selected: false
     },{
       name: '重要',
-      path: '/home/important',
+      path: 'important',
       selected: true
     },{
       name: '全部',
-      path: '/home/all',
+      path: 'all',
       selected: false
     },{
       name: '完赛',
-      path: '/home/finish',
+      path: 'finish',
       selected: false
     }]
+  },
+  methods: {
+    autoSwipe(page) {
+      this.$refs.swiper.autoSwipe(page)
+    },
+    dragToTranslate(percent) {//根据当前swiper拖动位置改变navbar显示
+      this.translate = percent
+    },
+    dragToChangeNav(boolean) {
+      let next = boolean ? 1 : -1
+      for(let [index,item] of this.header.navBar.entries()){
+        if(item.selected){
+          item.selected = false
+          this.header.navBar[ index + next ].selected = true
+          break
+        }
+      }
+    }
   }
 }
 </script>
@@ -66,6 +102,8 @@ export default {
   flex-direction: column;
 }
 .list-content{
-  overflow: auto;
+  /*overflow: auto;*/
+  flex-shrink: 0;
+  position: relative;
 }
 </style>
