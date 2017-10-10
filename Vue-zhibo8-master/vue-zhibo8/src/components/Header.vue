@@ -2,7 +2,7 @@
   <div class="header flex">
     <div class="left flex flex-1">
       <button type="button">
-        <img :src="header.avatar" class="avatar">
+        <img :src="header.avatar" class="avatar" @click="doInfo">
       </button>
     </div>
     <div class="center flex flex-1">
@@ -22,6 +22,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'header',
   components: {},
+  props: ['doInfo'],
   computed: {
     ...mapGetters(['config','header'])
   },

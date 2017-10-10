@@ -1,6 +1,6 @@
 <template>
   <div class="news">
-    <nav-header></nav-header>
+    <nav-header :doInfo="doInfo"></nav-header>
   </div>
 </template>
 
@@ -16,10 +16,18 @@ export default {
     }
   },
   mounted(){
+
+  },
+  methods: {
+    doInfo() {
+
+    }
   }
 }
 </script>
 
 <style scoped>
-
+.news{
+  flex-direction: column;
+}
 </style>

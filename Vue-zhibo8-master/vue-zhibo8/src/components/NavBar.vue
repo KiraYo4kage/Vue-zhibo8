@@ -48,7 +48,6 @@ export default {
       this.offsetLeft = this.dom.getElementsByClassName('selected')[0] ? this.dom.getElementsByClassName('selected')[0].offsetLeft : 0
     },
     jump(index) {
-      console.log(123);
       this.header.navBar.forEach((v,i) => {
         if(i === index) v.selected = true
         else v.selected = false

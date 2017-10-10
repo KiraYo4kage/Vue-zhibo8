@@ -1,6 +1,6 @@
 <template>
   <div class="home flex">
-    <nav-header></nav-header>
+    <nav-header :doInfo="doInfo"></nav-header>
     <nav-bar :translate="translate" :autoSwipe="autoSwipe"></nav-bar>
     <swiper :option="option" :dragToTranslate="dragToTranslate" :dragToChangeNav="dragToChangeNav" ref="swiper">
       <template v-for="item in header.navBar">
@@ -32,6 +32,7 @@ import MyScroller from '@/components/MyScroller'
 export default {
   name: 'home',
   components: { NavHeader, NavBar, MyScroller, Swiper },
+  props: ['doInfo'],
   data() {
     return {
       option: {

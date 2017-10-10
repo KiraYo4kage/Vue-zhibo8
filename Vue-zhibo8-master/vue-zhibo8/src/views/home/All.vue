@@ -1,11 +1,11 @@
 <template>
   <div class="all">
     <separator :text="'全部'"></separator>
-    <newsList v-for="i in 5"></newsList>
+    <newsList v-for="i in 5" :key="i"></newsList>
 
     <template v-for="i in 10">
       <separator :text="'09月22日 星期五'"></separator>
-      <gameList v-for="i in 5"></gameList>
+      <gameList v-for="i in 5" :key="i"></gameList>
     </template>
   </div>
 </template>

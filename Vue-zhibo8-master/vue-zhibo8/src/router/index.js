@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 import Layout from '@/components/Layout'
 import Home from '@/views/Home'
-import Video from '@/views/Video'
+import Videos from '@/views/Video'
 import News from '@/views/News'
 
 import homeModule from './home'
@@ -31,7 +31,7 @@ export default new Router({
         },
         {
           path: '/layout/video',
-          component: Video
+          component: Videos
         },
         {
           path: '/layout/news',

@@ -1,6 +1,6 @@
 <template>
   <div class="video">
-    <nav-header></nav-header>
+    <nav-header :doInfo="doInfo"></nav-header>
   </div>
 </template>
 
@@ -16,6 +16,12 @@ export default {
     }
   },
   mounted(){
+
+  },
+  methods: {
+    doInfo() {
+
+    }
   }
 }
 </script>

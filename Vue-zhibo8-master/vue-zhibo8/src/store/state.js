@@ -3,6 +3,9 @@ export default {
     pathRoot: '/layout',
     imgRoot: '../static/',
   },
+  lefter: {
+    show: false
+  },
   header: {
     avatar: '',
     title: '',

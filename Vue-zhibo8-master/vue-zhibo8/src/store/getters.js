@@ -1,5 +1,5 @@
 import getterCreator from './getterCreator.js'
 
 export default {
-  ...getterCreator(['config','header','footer'])
+  ...getterCreator(['config','lefter','header','footer'])
 }
